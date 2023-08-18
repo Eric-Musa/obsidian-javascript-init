@@ -78,27 +78,20 @@ function putCursorAtEndAndScroll() {
 app.workspace.setActiveLeaf(getCenterLeaf())
 
 let activeTabFiles = app.workspace.activeTabGroup.children.map(tab => tab.view.getState().file)
-// console.log('activeTabFiles', activeTabFiles)
 let dailyNoteFilepath = "001 Personal/Periodic/Daily/" + todaysDate() + ".md"
-// console.log('dailyNoteFilepath', dailyNoteFilepath)
 let dailyNoteTemplateFilepath = "008 Obsidian/Periodic/Daily Note Template.md"
 let dailyNoteFile = await getNoteFile(dailyNoteFilepath, dailyNoteTemplateFilepath)
-// console.log('dailyNoteFile', dailyNoteFile)
 
-console.log(app.workspace.activeLeaf.view.sourceMode)
 let dailyNoteTabIndex = activeTabFiles.indexOf(dailyNoteFilepath)
-// console.log('dailyNoteTabIndex', dailyNoteTabIndex)
+
 if (dailyNoteTabIndex === -1) {
     app.workspace.getLeaf("tab").openFile(dailyNoteFile)
 } else {
     setActiveTab(dailyNoteTabIndex)
 }
 
-console.log(app.workspace.activeLeaf.view.sourceMode)
-setTimeout(3500, ()=>{})
-console.log(app.workspace.activeLeaf.view.sourceMode)
+setTimeout(3500, ()=>{})  // tab's cmEditor, used to set caret position, may not be defined immediately on startup(?)
 
-await addToNote(dailyNoteFilepath, "")
-console.log(app.workspace.activeLeaf.view.sourceMode)
+await addToNote(dailyNoteFilepath, "")  // add new line, in case of existing content in note
 
 putCursorAtEndAndScroll()
