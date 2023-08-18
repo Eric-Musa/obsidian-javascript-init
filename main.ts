@@ -11,7 +11,7 @@ export default class JavaScriptInitPlugin extends Plugin {
     appendedScript: HTMLScriptElement;
 
     runCode() {
-        const source = String(this.settings.code);
+        const source = `(async () => { ${String(this.settings.code)} })();`;
         this.appendedScript = document.createElement("script");
         this.appendedScript.textContent = source;
         (document.head || document.documentElement).appendChild(

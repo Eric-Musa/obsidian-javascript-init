@@ -1,7 +1,7 @@
 {
-    "id": "obsidian-javascript-init",
-    "name": "JavaScript Init",
-    "version": "1.0.2",
+    "id": "erm-javascript-init",
+    "name": "ERM JavaScript Init",
+    "version": "1.0.3",
     "minAppVersion": "0.9.12",
     "description": "Run JavaScript when Obsidian loads, or any other time.",
     "author": "ryanpcmcquen",
